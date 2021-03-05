@@ -22,6 +22,12 @@ class Language(models.Model):
     desc = models.CharField(verbose_name="Описание", max_length=255)
     stars = models.FloatField(verbose_name="Звезды")
 
+    def range_star(self):
+        if self.stars % 1 == 0:
+            return [1 for _ in range(int(self.stars))]
+        else:
+            return [1 for _ in range(int(self.stars))] + [0]
+
     class Meta:
         verbose_name = 'Язык'
         verbose_name_plural = 'Языки'
