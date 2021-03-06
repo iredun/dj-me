@@ -34,3 +34,17 @@ class Language(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Education(models.Model):
+    name = models.CharField(verbose_name="Название", max_length=255)
+    loc = models.CharField(verbose_name="Учебное заведение", max_length=255)
+    year_start = models.IntegerField(verbose_name='Год начала обучения')
+    year_end = models.IntegerField(verbose_name='Год окончания обучения')
+
+    class Meta:
+        verbose_name = 'Обучение'
+        verbose_name_plural = 'Обучение'
+
+    def __str__(self):
+        return f"{self.name} {self.year_start}-{self.year_end}"
