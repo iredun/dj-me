@@ -51,8 +51,14 @@ class Education(models.Model):
 
 
 class SocLink(models.Model):
+    CHOICES = [
+        ('fa-github', 'GitHub'),
+        ('fa-instagram', 'Instagram'),
+        ('fa-vk', 'VK'),
+    ]
+
     link = models.URLField(verbose_name="Ссылка", max_length=255)
-    class_name = models.CharField(verbose_name="Название класса", max_length=255)
+    class_name = models.CharField(verbose_name="Соц. Сеть", max_length=255, choices=CHOICES)
     sort = models.IntegerField(verbose_name='Сортировка', default=100)
 
     class Meta:
