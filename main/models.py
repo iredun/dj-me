@@ -65,3 +65,27 @@ class SocLink(models.Model):
         verbose_name = 'Соц. сеть'
         verbose_name_plural = 'Соц. сети'
         ordering = ['sort']
+
+    def __str__(self):
+        return self.link
+
+
+def get_upload_project_dir(obj, file_name):
+    return f'projects/{file_name}'
+
+
+class Project(models.Model):
+    name = models.CharField(verbose_name="Название", max_length=255)
+    short_desc = models.CharField(verbose_name="Краткое описание", max_length=255)
+    image = models.ImageField(verbose_name='Картинка', upload_to=get_upload_project_dir)
+    desc = models.TextField(verbose_name='Текст проекта')
+    link = models.URLField(verbose_name="Ссылка", max_length=255)
+    sort = models.IntegerField(verbose_name='Сортировка', default=100)
+
+    class Meta:
+        verbose_name = 'Проект'
+        verbose_name_plural = 'Проекты'
+        ordering = ['sort']
+
+    def __str__(self):
+        return self.name
