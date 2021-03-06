@@ -48,3 +48,14 @@ class Education(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.year_start}-{self.year_end}"
+
+
+class SocLink(models.Model):
+    link = models.URLField(verbose_name="Ссылка", max_length=255)
+    class_name = models.CharField(verbose_name="Название класса", max_length=255)
+    sort = models.IntegerField(verbose_name='Сортировка', default=100)
+
+    class Meta:
+        verbose_name = 'Соц. сеть'
+        verbose_name_plural = 'Соц. сети'
+        ordering = ['sort']
