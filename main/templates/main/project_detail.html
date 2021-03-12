@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-12">
+                <section class="about section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">
+                            {{ project.name }} | <a href="{{ project.link }}" target="_blank">Посмотреть</a>
+                        </h2>
+                        <div class="content">
+                            <img class="img-fluid project-image rounded shadow-sm" src="{{ project.image.url }}" alt="Картинка {{ project.name }}" />
+                            <p>{{ project.desc }}</p>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+            </div><!--//primary-->
+        </div><!--//row-->
+    </div><!--//masonry-->
+{% endblock %}
