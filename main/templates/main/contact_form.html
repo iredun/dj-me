@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-12">
+                <section class="about section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">
+                            Написать мне!
+                        </h2>
+                        <div class="content">
+                            <form method="post">
+                                {% csrf_token %}
+                              <div class="form-group">
+                                <label for="form-email">Ваш Email</label>
+                                <input type="email" class="form-control" id="form-email" name="email" placeholder="Ваш Email" required>
+                              </div>
+                              <div class="form-group">
+                                <label for="form-question">Ваш вопрос</label>
+                                <textarea class="form-control" id="form-question" rows="5" name="question" placeholder="Опишите вашу идею" required></textarea>
+                              </div>
+                                <p>Какой проект вы хотите?</p>
+                              <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="project" id="project1" value="Интернет магазины" required>
+                                    <label class="form-check-label" for="project1">
+                                        Интернет магазины
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="project" id="project2" value="Сайты визитки" required>
+                                    <label class="form-check-label" for="project2">
+                                        Сайты визитки
+                                    </label>
+                                </div>
+                                <br>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </section><!--//section-->
+            </div><!--//primary-->
+        </div><!--//row-->
+    </div><!--//masonry-->
+{% endblock %}
