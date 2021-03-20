@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models import Skill, Language, Education, SocLink, Project
+from main.models import Skill, Language, Education, SocLink, Project, ContactForm
 
 
 @admin.register(Skill)
@@ -29,3 +29,8 @@ class SocLinkAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'link', 'sort']
     list_display_links = ['id', 'name']
+
+
+@admin.register(ContactForm)
+class ContactFormAdmin(admin.ModelAdmin):
+    list_display = ['id', 'email', 'project']

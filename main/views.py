@@ -2,7 +2,8 @@ from pprint import pprint
 
 from django.shortcuts import render
 
-from main.models import Skill, Language, Education, SocLink, Project
+from main.forms import ContactFormForm
+from main.models import Skill, Language, Education, SocLink, Project, ContactForm
 
 
 def index(request):
@@ -29,10 +30,15 @@ def project_detail(request, pk):
 
 
 def contact_form(request):
+    form = ContactFormForm()
     context = {
-        'soc_links': SocLink.objects.all()
+        'soc_links': SocLink.objects.all(),
     }
-    if request.method == 'POST':
-        pprint(request.POST)
 
+    if request.method == 'POST':
+        form = ContactFormForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+
+    context['form'] = form
     return render(request, 'main/contact_form.html', context)

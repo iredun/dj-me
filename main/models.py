@@ -89,3 +89,16 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ContactForm(models.Model):
+    email = models.EmailField(verbose_name="Email", max_length=255)
+    question = models.TextField(verbose_name="Вопрос")
+    project = models.CharField(verbose_name="Проект", max_length=255)
+
+    class Meta:
+        verbose_name = 'Данные с формы'
+        verbose_name_plural = 'Данные с формы'
+
+    def __str__(self):
+        return self.email
